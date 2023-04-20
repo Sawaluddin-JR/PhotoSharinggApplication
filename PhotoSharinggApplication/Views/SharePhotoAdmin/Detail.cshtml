@@ -1,0 +1,25 @@
+﻿@using PhotoSharinggApplication.Helper;
+@{
+    Layout = "_LayoutAdmin";
+}
+@model SharePhoto
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="thumbnail">
+            <a href="#" data-toggle="modal" data-target="#modal-photo-@Model.Id">
+                <img src="~/upload/@Model.Photo" alt="@Model.JudulPhoto">
+                <a href="~/sharephotoadmin/download/@Model.Id" download>Download Photo</a>
+            </a>
+            <div class="caption">
+                <h5>@Model.JudulPhoto</h5>
+                <p>@Model.Deskripsi</p>
+                <p>@Model.Status.Name</p>
+                <p>@Model.TanggalUpload.ToString("dd MMM yyyy")</p>
+                <p>
+                    <a href="@Url.Action("Index", "sharephotoadmin")" class="btn btn-primary">Kembali</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+﻿<div class="card-body">
+    <div class="table-responsive">
+        <table class="table table-bordered" id="data-table" width="100%" cellspacing="0">
+            <thead class="thead-light">
+                <tr>
+                    <th>Nama Barang</th>
+                    <th>Gambar</th>
+                    <th>Stok</th>
+                    <th>Harga</th>
+                    <th>Deskripsi</th>
+                </tr>
+            </thead>
+            <tbody class="table" id="isi-barang">
+
+            </tbody>
+        </table>
+    </div>
+</div>
+@section Scripts{
+    <script>
+        $.ajax({
+            method: "GET",
+            url: "/api/home/barang",
+            success: function (responnya) {
+                responnya.data.forEach(nilai => {
+                    $("#isi-barang").append(`
+                        <tr>
+                            <td>${nilai.namaBarang}</td>
+                            <td>${nilai.image}</td>
+                            <td>${nilai.stok}</td>
+                            <td>${nilai.harga}</td>
+                            <td>${nilai.deskripsi}</td>
+                        </tr>
+                    `)
+                })
+                $('#data-table').DataTable() // pake library datatable
+            },
+            error: function (err) {
+                alert(err)
+            }
+        })</script>
+}

@@ -1,0 +1,68 @@
+﻿@using PhotoSharinggApplication.Helper;
+@{
+    Layout = "_LayoutUser";
+}
+@model List<SharePhoto>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Photos</title>
+    <style>
+        .hover - effect {
+            position: relative;
+        }
+
+            .hover - effect::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background - color: rgba(255, 255, 255, 0.3);
+                z - index: 1;
+                opacity: 0;
+                transition: opacity 0.2s ease -in -out;
+            }
+
+            .hover - effect: hover::before {
+                opacity: 1;
+            }
+    </style>
+</head>
+<body>
+    <div class="col-sm-5 col-md-5 d-flex align-items-center justify-content-end" id="search_widget" style="float:right">
+        <form method="get" action="Index">
+            <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
+            <input type="text" name="search" value="" placeholder="Search" class="ui-autocomplete-input" autocomplete="off">
+            <button type="submit">
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+    </div>
+    <div class="container">
+        <h2 class="text-center">Share Photo Application - SADILgram</h2><br /><hr />
+        <div class="row">
+            @foreach (var photo in Model)
+            {
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                        <a href="@Url.Action("detail", "sharephoto", new { id = photo.Id })">
+                            <div class="card-img-top hover-effect">
+                                <img src="~/upload/@photo.Photo" alt="@photo.JudulPhoto" class="card-img-top hover-zoom">
+                            </div>
+                            <p style="color:darkblue;font-style:italic;font-size:20px">Detail</p>
+                        </a>
+                        <div class="card-body">
+                            <p class="card-text">@photo.NamaPengunggah</p>
+                            <h5 class="card-title">@photo.JudulPhoto</h5>
+                            <p class="card-text">@photo.Deskripsi</p>
+                            <p class="card-text"><small class="text-muted">@photo.TanggalUpload.ToShortDateString()</small></p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</body>
+</html>

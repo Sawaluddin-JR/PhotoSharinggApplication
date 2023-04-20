@@ -1,0 +1,47 @@
+﻿@using PhotoSharinggApplication.Helper;
+@{
+    Layout = "_LayoutAdmin";
+}
+@model List<SharePhoto>
+
+<div class="container-fluid">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h1 class="h3 mb-2 text-gray-800">Table Photos</h1>
+            <a asp-area="" asp-controller="SharePhotoAdmin" asp-action="Create"><input type="submit" class="btn btn-outline-success" value="Add Data"></a>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Nama</th>
+                            <th>Judul Photo</th>
+                            <th>Tanggal Unggah</th>
+                            <th>URL Photo</th>
+                            <th>Status Unggahan</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var photo in Model)
+                        {
+                            <tr>
+                                <td>@photo.NamaPengunggah</td>
+                                <td>@photo.JudulPhoto</td>
+                                <td>@photo.TanggalUpload.ToShortDateString()</td>
+                                <td>@photo.Photo</td>
+                                <td>@photo.Status.Name</td>
+                                <td>
+                                    <a href="@Url.Action("Edit", "SharePhotoAdmin", new { id = photo.Id })" class="btn btn-warning btn-sm">Edit</a>
+                                    <a href="@Url.Action("Delete", "SharePhotoAdmin", new { id = photo.Id })" class="btn btn-danger btn-sm">Hapus</a>
+                                    <a href="@Url.Action("Detail", "SharePhotoAdmin", new { id = photo.Id })" class="btn btn-sm btn-primary" style="margin-top:8px">Detail</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

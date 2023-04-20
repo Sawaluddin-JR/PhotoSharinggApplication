@@ -1,0 +1,20 @@
+﻿@model SharePhoto
+@{
+    Layout = "_LayoutUser";
+}
+
+<div class="photo-details">
+    <h2>@Model.JudulPhoto</h2>
+    <div class="photo-zoom">
+        <a href="@Model.Photo" target="_blank">
+            <img src="~/upload/@Model.Photo" alt="@Model.JudulPhoto" />
+            <a href="~/sharephoto/download/@Model.Id" download>Download Photo</a>
+            <span class="zoom-icon"><i class="fa fa-search-plus"></i></span>
+        </a>
+    </div>
+    <p>@Model.NamaPengunggah</p>
+    <p>@Model.Deskripsi</p>
+    <p>@Model.Status.Name</p>
+    <p>@Model.TanggalUpload</p>
+    <a href="@Url.Action("Index", "sharephoto")" class="btn btn-primary btn-sm">Kembali ke Daftar Photo</a>
+</div>

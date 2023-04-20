@@ -1,0 +1,46 @@
+﻿@model SharePhoto
+
+@{
+    Layout = "_LayoutUser";
+}
+
+<div class="row">
+    <div class="col-6">
+        <div class="card">
+            <div class="card-header">
+                <h3>Edit SharePhoto</h3>
+            </div>
+
+            <div class="card-body">
+                <form method="post" action="Edit">
+                    <input type="hidden" name="Id" value="@Model.Id">
+                    <div class="mb-3">
+                        <input type="hidden" name="NamaPengunggah" class="form-control" value="@Model.NamaPengunggah">
+                    </div>
+                    <div class="mb-3">
+                        <label>Judul Photo</label>
+                        <input type="text" name="JudulPhoto" class="form-control" value="@Model.JudulPhoto">
+                    </div>
+                    <div class="mb-3">
+                        <label>Deskripsi</label>
+                        <input type="text" name="Deskripsi" class="form-control" value="@Model.Deskripsi">
+                    </div>
+                    <div class="mb-3">
+                        <input type="hidden" name="TanggalUpload" class="form-control" value="@Model.TanggalUpload">
+                    </div>
+                    <div class="form-group">
+                        <select asp-for="Status" asp-items="@ViewBag.Statuses" class="form-control" value="@Model.Status.Name">
+                            <option>Pilih Status</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <input type="hidden" name="Photo" class="form-control" value="@Model.Photo">
+                    </div>
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-success">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+﻿@model SharePhoto
+@{
+    Layout = "_LayoutAdmin";
+}
+
+<div class="container-fluid">
+    <h1 class="h3 mb-2 text-gray-800">Ubah Data Photos</h1>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Update Data</h6>
+        </div>
+        <div class="card-body">
+            <form action="Edit" method="post">
+                <input type="hidden" name="Id" value="@Model.Id">
+                <div class="mb-3">
+                    <input type="hidden" name="NamaPengunggah" class="form-control" value="@Model.NamaPengunggah">
+                </div>
+                <div class="mb-3">
+                    <label>Judul Photo</label>
+                    <input type="text" name="JudulPhoto" class="form-control" value="@Model.JudulPhoto">
+                </div>
+                <div class="mb-3">
+                    <label>Deskripsi</label>
+                    <input type="text" name="Deskripsi" class="form-control" value="@Model.Deskripsi">
+                </div>
+                <div class="mb-3">
+                    <input type="hidden" name="TanggalUpload" class="form-control" value="@DateTime.Now">
+                </div>
+                <div class="form-group">
+                    <select name="IdStatus" asp-items="@ViewBag.Statuses" class="form-control">
+                        @Model.Status.Name
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <input type="hidden" name="Photo" class="form-control" value="@Model.Photo">
+                </div>
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-success">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

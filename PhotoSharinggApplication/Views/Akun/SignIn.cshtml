@@ -1,0 +1,53 @@
+﻿@model User
+@{
+    Layout = "_LayoutAkun";
+    @if (!string.IsNullOrEmpty(ViewBag.Pesan))
+    {
+        // Harus pake " agar alert muncul
+        <script>alert("@ViewBag.Pesan");</script>
+    }
+}
+<title>SADILgram - Sign In</title>
+<div class="container">
+    <h1 class="text-center title-page">Sign In</h1>
+    <div class="login-form">
+        <form id="customer-form" asp-action="SignIn" method="post">
+            <div>
+                <input type="hidden" name="cek" value="login">
+                <div class="form-group no-gutters">
+                    <input class="form-control" asp-for="Username" type="text" placeholder="Username">
+                </div>
+                <div class="form-group no-gutters">
+                    <div class="input-group js-parent-focus">
+                        <input class="form-control js-child-focus js-visible-password" asp-for="Password" type="Password" placeholder="Password">
+                    </div>
+                </div>
+                <div class="no-gutters text-center">
+                    <div class="forgot-password">
+                        <a href="#" rel="nofollow">
+                            Forgot your password?
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix">
+                <div class="text-center no-gutters">
+                    <input type="hidden" name="submitLogin">
+                    <button class="btn btn-primary" type="submit">
+                        Sign in
+                    </button>
+                </div>
+            </div>
+            <div class="clearfix">
+                <div class="text-center no-gutters">
+                    <span class="txt1 p-b-9">
+                        Don't have an account?
+                    </span>
+                    <a asp-action="SignUp" class="txt3">
+                        Sign Up
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
