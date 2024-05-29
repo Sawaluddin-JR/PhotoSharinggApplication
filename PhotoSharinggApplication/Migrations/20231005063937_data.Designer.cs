@@ -11,8 +11,8 @@ using PhotoSharinggApplication.Data;
 namespace PhotoSharinggApplication.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230420051742_MyProject")]
-    partial class MyProject
+    [Migration("20231005063937_data")]
+    partial class data
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

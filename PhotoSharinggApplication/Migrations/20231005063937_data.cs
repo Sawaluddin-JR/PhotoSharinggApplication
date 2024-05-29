@@ -9,7 +9,7 @@ using MySql.EntityFrameworkCore.Metadata;
 namespace PhotoSharinggApplication.Migrations
 {
     /// <inheritdoc />
-    public partial class MyProject : Migration
+    public partial class data : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

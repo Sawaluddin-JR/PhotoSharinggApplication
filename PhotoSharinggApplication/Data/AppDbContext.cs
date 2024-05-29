@@ -1,5 +1,5 @@
-﻿using PhotoSharinggApplication.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using PhotoSharinggApplication.Models;
 
 namespace PhotoSharinggApplication.Data
 {
